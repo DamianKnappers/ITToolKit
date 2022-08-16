@@ -35,6 +35,8 @@
             this.generalProgressbar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.ccButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.adwButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // hd1
@@ -93,19 +95,42 @@
             this.ccButton.UseVisualStyleBackColor = true;
             this.ccButton.Click += new System.EventHandler(this.ccButton_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1015, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Anti Adware";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // adwButton
+            // 
+            this.adwButton.Location = new System.Drawing.Point(1005, 36);
+            this.adwButton.Name = "adwButton";
+            this.adwButton.Size = new System.Drawing.Size(86, 23);
+            this.adwButton.TabIndex = 6;
+            this.adwButton.Text = "Installeer";
+            this.adwButton.UseVisualStyleBackColor = true;
+            this.adwButton.Click += new System.EventHandler(this.adwButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1287, 610);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.adwButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ccButton);
             this.Controls.Add(this.generalProgressbar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tvwButton);
             this.Controls.Add(this.hd1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "IT Toolkit";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,6 +145,8 @@
         private System.Windows.Forms.ProgressBar generalProgressbar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ccButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button adwButton;
     }
 }
 

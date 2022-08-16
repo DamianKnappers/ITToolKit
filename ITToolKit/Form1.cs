@@ -24,10 +24,12 @@ namespace ITToolKit
         public string twRunRunstring;
         public string ccLocation;
         public string ccRunRunString;
+        public string adwRunRunString;
         public string Username = Environment.UserName;
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Initiate the regedit searches //
 
             // TeamViewer //
@@ -60,6 +62,60 @@ namespace ITToolKit
                 }
                 else { ccButton.Text = "Installeer"; }
             }
+            // Anti Adware (Malwarebytes) //
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+            adwRunRunString = projectDirectory + @"\adwcleaner.exe";
+            try
+            {
+                if (File.Exists(adwRunRunString))
+                {
+                    adwButton.Text = "Start";
+                }
+                else {
+                    adwRunRunString = null;
+                    adwButton.Text = "Installeer"; 
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void adwButton_Click(object sender, EventArgs e)
+        {
+            if (adwButton.Text == "Start")
+            {
+                if (adwRunRunString != null)
+                {
+                    System.Diagnostics.Process.Start(adwRunRunString);
+                }
+                else
+                {
+                    MessageBox.Show("Can\'t find the executable for this Malwarebytes Anti-AdWare installation");
+                }
+            }
+            else
+            {
+                // Anti Adware not installed, install code here
+                Uri dwUrl = new Uri("https://adwcleaner.malwarebytes.com/adwcleaner?channel=release");
+                try
+                {
+                    if (!File.Exists(adwRunRunString))
+                    {
+                        string newLOc = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\adwcleaner.exe";
+                        WebClient wc = new WebClient();
+                        wc.DownloadFileAsync(dwUrl, newLOc);
+                        wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(tvwDownloadChanged);
+                        wc.DownloadFileCompleted += new AsyncCompletedEventHandler(adwDownloadCompleted);
+                        adwRunRunString = newLOc;
+                        adwButton.Text = "Start";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
         private void ccButton_Click(object sender, EventArgs e)
@@ -73,7 +129,7 @@ namespace ITToolKit
                 }
                 else
                 {
-                    MessageBox.Show("Can\'t find the executable for this TeamViewer installation");
+                    MessageBox.Show("Can\'t find the executable for this CCleaner installation");
                 }
             }
             else
@@ -93,6 +149,7 @@ namespace ITToolKit
                         wc.DownloadFileAsync(dwUrl, filename);
                         wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(tvwDownloadChanged);
                         wc.DownloadFileCompleted += new AsyncCompletedEventHandler(ccDownloadCompleted);
+                        ccButton.Text = "Start";
                     }
                 }
                 catch (Exception ex)
@@ -128,6 +185,7 @@ namespace ITToolKit
                         wc.DownloadFileAsync(dwUrl, filename);
                         wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(tvwDownloadChanged);
                         wc.DownloadFileCompleted += new AsyncCompletedEventHandler(tvwDownloadCompleted);
+                        tvwButton.Text = "Start";
                     }
                 } catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
@@ -135,6 +193,8 @@ namespace ITToolKit
             }
         }
         
+
+        // Download Events //
         private void tvwDownloadChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             generalProgressbar.Value = e.ProgressPercentage;
@@ -158,6 +218,20 @@ namespace ITToolKit
             }
         }
 
+        void adwDownloadCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                MessageBox.Show("Download complete!, running exe", "Completed!");
+                System.Diagnostics.Process.Start(adwRunRunString);
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong with the connection, please try again later");
+                MessageBox.Show(e.Error.ToString());
+            }
+        }
+
         private void tvwDownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if(e.Error == null)
@@ -172,6 +246,7 @@ namespace ITToolKit
             }
         }
 
+        // Re-Used Functions //
         private string SearchRegString(string keyname, string data, string valueToFind, string returnValue)
         {
             RegistryKey uninstallKey = Registry.LocalMachine.OpenSubKey(keyname);
@@ -188,3 +263,8 @@ namespace ITToolKit
         }
     }
 }
+
+// Malwarebytes itself
+// Registry DisplayName = Malwarebytes version 4.5.13.208
+// Need to search for publisher, then sort on the products of Malwarebytes. Anti adware is registered differently. No other non dynamic things to go on.
+// Path : Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{35065F43-4BB2-439A-BFF7-0F1014F2E0CD}_is1
