@@ -37,6 +37,8 @@
             this.ccButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.adwButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // hd1
@@ -50,7 +52,8 @@
             // 
             // tvwButton
             // 
-            this.tvwButton.Location = new System.Drawing.Point(1189, 36);
+            this.tvwButton.AutoSize = true;
+            this.tvwButton.Location = new System.Drawing.Point(270, 31);
             this.tvwButton.Name = "tvwButton";
             this.tvwButton.Size = new System.Drawing.Size(86, 23);
             this.tvwButton.TabIndex = 1;
@@ -61,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1198, 20);
+            this.label1.Location = new System.Drawing.Point(277, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 2;
@@ -70,6 +73,7 @@
             // 
             // generalProgressbar
             // 
+            this.generalProgressbar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.generalProgressbar.Location = new System.Drawing.Point(1114, 575);
             this.generalProgressbar.Name = "generalProgressbar";
             this.generalProgressbar.Size = new System.Drawing.Size(161, 23);
@@ -78,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1111, 20);
+            this.label2.Location = new System.Drawing.Point(190, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 5;
@@ -87,7 +91,8 @@
             // 
             // ccButton
             // 
-            this.ccButton.Location = new System.Drawing.Point(1097, 36);
+            this.ccButton.AutoSize = true;
+            this.ccButton.Location = new System.Drawing.Point(178, 31);
             this.ccButton.Name = "ccButton";
             this.ccButton.Size = new System.Drawing.Size(86, 23);
             this.ccButton.TabIndex = 4;
@@ -98,7 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1015, 20);
+            this.label3.Location = new System.Drawing.Point(93, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 7;
@@ -107,7 +112,8 @@
             // 
             // adwButton
             // 
-            this.adwButton.Location = new System.Drawing.Point(1005, 36);
+            this.adwButton.AutoSize = true;
+            this.adwButton.Location = new System.Drawing.Point(86, 31);
             this.adwButton.Name = "adwButton";
             this.adwButton.Size = new System.Drawing.Size(86, 23);
             this.adwButton.TabIndex = 6;
@@ -115,23 +121,42 @@
             this.adwButton.UseVisualStyleBackColor = true;
             this.adwButton.Click += new System.EventHandler(this.adwButton_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox1.Controls.Add(this.adwButton);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tvwButton);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.ccButton);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(912, 1);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox1.Size = new System.Drawing.Size(365, 60);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(1287, 610);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.adwButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.ccButton);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.generalProgressbar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tvwButton);
             this.Controls.Add(this.hd1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "IT Toolkit";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +172,7 @@
         private System.Windows.Forms.Button ccButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button adwButton;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
