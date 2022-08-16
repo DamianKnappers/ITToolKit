@@ -29,6 +29,12 @@ namespace ITToolKit
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Initiate the local tool directory //
+            string baseDir = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+            if(!Directory.Exists(baseDir + @"\3rdParty"))
+            {
+                Directory.CreateDirectory(baseDir + @"\3rdParty");
+            }
 
             // Initiate the regedit searches //
 
@@ -64,7 +70,7 @@ namespace ITToolKit
             }
             // Anti Adware (Malwarebytes) //
             string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
-            adwRunRunString = projectDirectory + @"\adwcleaner.exe";
+            adwRunRunString = projectDirectory + @"\3rdParty\adwcleaner.exe";
             try
             {
                 if (File.Exists(adwRunRunString))
@@ -102,7 +108,7 @@ namespace ITToolKit
                 {
                     if (!File.Exists(adwRunRunString))
                     {
-                        string newLOc = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\adwcleaner.exe";
+                        string newLOc = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\3rdParty\adwcleaner.exe";
                         WebClient wc = new WebClient();
                         wc.DownloadFileAsync(dwUrl, newLOc);
                         wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(tvwDownloadChanged);
