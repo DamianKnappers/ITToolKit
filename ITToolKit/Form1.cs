@@ -267,6 +267,14 @@ namespace ITToolKit
             }
             return string.Empty;
         }
+
+        private void openLostTextDialog_Click(object sender, EventArgs e)
+        { 
+            //private Form1 mainForm;
+            //private TextSearchForm searchForm;
+            TextSearchForm searchForm = new TextSearchForm();  
+            searchForm.ShowDialog();
+        }
     }
 }
 

@@ -38,7 +38,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.adwButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lostandfoundGrpBox = new System.Windows.Forms.GroupBox();
+            this.openLostTextDialog = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.lostandfoundGrpBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // hd1
@@ -142,12 +145,33 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
+            // lostandfoundGrpBox
+            // 
+            this.lostandfoundGrpBox.Controls.Add(this.openLostTextDialog);
+            this.lostandfoundGrpBox.Location = new System.Drawing.Point(12, 428);
+            this.lostandfoundGrpBox.Name = "lostandfoundGrpBox";
+            this.lostandfoundGrpBox.Size = new System.Drawing.Size(279, 170);
+            this.lostandfoundGrpBox.TabIndex = 9;
+            this.lostandfoundGrpBox.TabStop = false;
+            this.lostandfoundGrpBox.Text = "Lost n Found";
+            // 
+            // openLostTextDialog
+            // 
+            this.openLostTextDialog.Location = new System.Drawing.Point(6, 19);
+            this.openLostTextDialog.Name = "openLostTextDialog";
+            this.openLostTextDialog.Size = new System.Drawing.Size(267, 23);
+            this.openLostTextDialog.TabIndex = 10;
+            this.openLostTextDialog.Text = "Find your Text ";
+            this.openLostTextDialog.UseVisualStyleBackColor = true;
+            this.openLostTextDialog.Click += new System.EventHandler(this.openLostTextDialog_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(1287, 610);
+            this.Controls.Add(this.lostandfoundGrpBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.generalProgressbar);
             this.Controls.Add(this.hd1);
@@ -157,6 +181,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.lostandfoundGrpBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,6 +198,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button adwButton;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox lostandfoundGrpBox;
+        private System.Windows.Forms.Button openLostTextDialog;
     }
 }
 
