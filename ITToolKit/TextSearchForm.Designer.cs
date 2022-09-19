@@ -36,6 +36,7 @@
             this.selectDriveComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.findFilesProgress = new System.Windows.Forms.ProgressBar();
+            this.clearResultCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // searchStringsInput
@@ -111,11 +112,22 @@
             this.findFilesProgress.Size = new System.Drawing.Size(141, 23);
             this.findFilesProgress.TabIndex = 7;
             // 
+            // clearResultCheckbox
+            // 
+            this.clearResultCheckbox.AutoSize = true;
+            this.clearResultCheckbox.Location = new System.Drawing.Point(319, 325);
+            this.clearResultCheckbox.Name = "clearResultCheckbox";
+            this.clearResultCheckbox.Size = new System.Drawing.Size(88, 17);
+            this.clearResultCheckbox.TabIndex = 8;
+            this.clearResultCheckbox.Text = "Clear Results";
+            this.clearResultCheckbox.UseVisualStyleBackColor = true;
+            // 
             // TextSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 365);
+            this.Controls.Add(this.clearResultCheckbox);
             this.Controls.Add(this.findFilesProgress);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.selectDriveComboBox);
@@ -141,5 +153,6 @@
         private System.Windows.Forms.ComboBox selectDriveComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ProgressBar findFilesProgress;
+        private System.Windows.Forms.CheckBox clearResultCheckbox;
     }
 }

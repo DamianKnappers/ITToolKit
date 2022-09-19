@@ -30,13 +30,27 @@ namespace ITToolKit
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
+            // TODO: Search starts at subfolders not the main drive itself. Fix this
+            if (clearResultCheckbox.Checked)
+            {
+                resultListBox.Items.Clear();
+            }
             string[] inputSearchStrings = searchStringsInput.Text.Split('\n');
             string[] directories = Directory.GetDirectories(selectDriveComboBox.SelectedItem.ToString(), "*", SearchOption.TopDirectoryOnly);
+            string[] mainFiles = Directory.GetFiles(selectDriveComboBox.SelectedItem.ToString(), @"*.txt");
             string[] files = new string[] { };
             findFilesProgress.Minimum = 1;
             findFilesProgress.Value = 1;
             findFilesProgress.Maximum = directories.Length;
             Console.WriteLine(directories.Length);
+            try
+            {
+                foreach (string mainFile in mainFiles)
+                {
+                    Array.Resize(ref files, files.Length + 1);
+                    files[files.Length - 1] = mainFile;
+                }
+            } catch (UnauthorizedAccessException) { Console.Write("[SKIPPING] Base drive files not accessable"); }
             try
             {
                 foreach (string dir in directories)
@@ -60,12 +74,16 @@ namespace ITToolKit
             {
                 foreach(string file in files)
                 {
-                    // Read file and compare to input string
-                    if (File.ReadLines(file).Any(line => line.Contains(inputString)))
+                    try
                     {
-                        resultListBox.Items.Add(file);
-                        MessageBox.Show("Found text file which contains your input string!");
-                        break;
+                        // Read file and compare to input string
+                        if (File.ReadLines(file).Any(line => line.Contains(inputString)))
+                        {
+                            resultListBox.Items.Add(file);
+                        }
+                    } catch (System.IO.IOException)
+                    {
+                        Console.Write("[SKIPPING] System IO Exception");
                     }
                 }
             }
@@ -102,10 +120,7 @@ namespace ITToolKit
 
         private void openFileButton_Click(object sender, EventArgs e)
         {
-            if(resultListBox.SelectedItem != null)
-            {
-                System.Diagnostics.Process.Start(resultListBox.SelectedItem.ToString());
-            }
+            if(resultListBox.SelectedItem != null) { System.Diagnostics.Process.Start(resultListBox.SelectedItem.ToString()); }
         }
     }
 }
